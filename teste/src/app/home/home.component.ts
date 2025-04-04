@@ -1,35 +1,64 @@
 import { Component } from '@angular/core';
-import { HeaderComponent } from '../components/header/header.component';
+import { CommonModule } from '@angular/common';
 import { SidebarComponent } from '../components/sidebar/sidebar.component';
 import { UserModalComponent } from '../components/user-modal/user-modal.component';
+import { UserService, User } from '../services/user.service';
+import { HeaderComponent } from '../components/header/header.component';
+import { HttpClientModule } from '@angular/common/http';
 
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [HeaderComponent, SidebarComponent, UserModalComponent],
+  imports: [
+    CommonModule,
+    SidebarComponent,
+    UserModalComponent,
+    HeaderComponent,
+    HttpClientModule
+  ],
   templateUrl: './home.component.html',
   styleUrl: './home.component.scss'
 })
 export class HomeComponent {
   showUserModal = false;
-  users = [
-    { id: 1, name: 'Usuário 1', email: 'usuario1@email.com' },
-    { id: 2, name: 'Usuário 2', email: 'usuario2@email.com' }
-  ];
+  users: User[] = [];
+
+  constructor(private userService: UserService) {}
 
   openListModal() {
     this.showUserModal = true;
+
+    this.userService.getAllUsers().subscribe({
+      next: (res) => {
+        this.users = res;
+      },
+      error: (err) => {
+        console.error('Erro ao buscar usuários:', err);
+      }
+    });
   }
 
   closeModal() {
     this.showUserModal = false;
   }
 
-  editUser(user: any) {
+  editUser(user: User) {
     console.log('Editar usuário:', user);
   }
 
-  deleteUser(userId: number) {
-    this.users = this.users.filter(user => user.id !== userId);
+  deleteUser(user: User) {
+    if (user.id !== undefined) {
+      this.userService.deleteUser(user.id).subscribe({
+        next: () => {
+          this.users = this.users.filter(u => u.id !== user.id);
+          console.log('Usuário deletado:', user.id);
+        },
+        error: (err) => {
+          console.error('Erro ao deletar usuário:', err);
+        }
+      });
+    } else {
+      console.warn('ID do usuário é indefinido. Exclusão não realizada.', user);
+    }
   }
 }

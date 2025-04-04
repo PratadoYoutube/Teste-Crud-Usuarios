@@ -1,27 +1,11 @@
-<div class="modal" *ngIf="isOpen">
-  <div class="modal__content">
-    <h2>Lista de Usuários</h2>
+<div *ngIf="isOpen" class="modal">
+  <h2>Usuários</h2>
 
-    <table class="user-table">
-      <thead>
-        <tr>
-          <th>Nome</th>
-          <th>Email</th>
-          <th>Ações</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr *ngFor="let user of users">
-          <td>{{ user.name }}</td>
-          <td>{{ user.email }}</td>
-          <td>
-            <button (click)="onEdit(user)">✏️ Editar</button>
-            <button (click)="onDelete(user.id)">🗑️ Deletar</button>
-          </td>
-        </tr>
-      </tbody>
-    </table>
+  <p *ngIf="isLoading">Carregando...</p>
 
-    <button (click)="closeModal.emit()">Fechar</button>
-  </div>
+  <ul *ngIf="!isLoading">
+    <li *ngFor="let user of users">
+      {{ user.name }} - {{ user.email }}
+    </li>
+  </ul>
 </div>
