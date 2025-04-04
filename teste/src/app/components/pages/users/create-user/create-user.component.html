@@ -1,0 +1,9 @@
+<form [formGroup]="userForm" (ngSubmit)="submitForm()" class="create-user">
+  <input type="text" formControlName="name" placeholder="Nome" required />
+  <input type="email" formControlName="email" placeholder="Email" required />
+  <textarea formControlName="bio" placeholder="Bio"></textarea>
+  <input type="text" formControlName="profilePicture" placeholder="URL da Foto de Perfil" required />
+
+  <button type="submit">Cadastrar Usuário</button>
+  <button type="button" (click)="goBack()">Voltar</button>
+</form>

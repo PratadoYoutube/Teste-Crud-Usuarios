@@ -1,0 +1,10 @@
+<app-header></app-header>
+<app-sidebar (openUserList)="openListModal()"></app-sidebar>
+<app-user-modal
+  [isOpen]="showUserModal"
+  [users]="users"
+  (closeModal)="closeModal()"
+  (editUser)="editUser($event)"
+  (deleteUser)="deleteUser($event)">
+</app-user-modal>
+
