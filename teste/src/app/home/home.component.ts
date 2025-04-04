@@ -4,6 +4,7 @@ import { SidebarComponent } from '../components/sidebar/sidebar.component';
 import { UserModalComponent } from '../components/user-modal/user-modal.component';
 import { UserService, User } from '../services/user.service';
 import { HeaderComponent } from '../components/header/header.component';
+import { RouterModule } from '@angular/router';
 import { HttpClientModule } from '@angular/common/http';
 
 @Component({
@@ -11,10 +12,11 @@ import { HttpClientModule } from '@angular/common/http';
   standalone: true,
   imports: [
     CommonModule,
+    RouterModule,
+    HttpClientModule,
     SidebarComponent,
     UserModalComponent,
     HeaderComponent,
-    HttpClientModule
   ],
   templateUrl: './home.component.html',
   styleUrl: './home.component.scss'
@@ -61,4 +63,17 @@ export class HomeComponent {
       console.warn('ID do usuário é indefinido. Exclusão não realizada.', user);
     }
   }
+  
+  searchTerm = '';
+
+  onSearch(term: string) {
+    this.searchTerm = term.toLowerCase(); // minúsculas para comparar
+  }
+  get filteredUsers(): User[] {
+    if (!this.searchTerm) return this.users;
+    return this.users.filter(user =>
+      user.name.toLowerCase().includes(this.searchTerm)
+    );
+  }
+  
 }

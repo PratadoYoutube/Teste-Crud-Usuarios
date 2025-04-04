@@ -1,15 +1,22 @@
 <header class="header">
-    <h1 class="header__title">Crud de Usuários</h1>
-  
-    <div class="header__search">
-      <input type="text" class="header__search-input" placeholder="Pesquisar usuários...">
+  <h1 class="header__title">Crud de Usuários</h1>
+
+  <div class="header__search">
+    <input
+      type="text"
+      placeholder="Buscar usuário..."
+      [(ngModel)]="searchInput"
+      (input)="onSearch(searchInput)"
+      class="header__search-input"
+    />
+    <button *ngIf="searchInput" (click)="clearSearch()" class="header__clear-btn">✖</button>
+  </div>
+
+  <div class="header__actions">
+    <button class="header__logout">Logout</button>
+    <div class="header__profile">
+      <img src="assets/userExample.jpg" alt="Foto de perfil do usuário" class="header__profile-img">
+
     </div>
-  
-    <div class="header__actions">
-      <button class="header__logout">Logout</button>
-      <div class="header__profile">
-        <img src="" alt="Foto de perfil" class="header__profile-img">
-      </div>
-    </div>
-  </header>
-  
+  </div>
+</header>

@@ -1,11 +1,11 @@
 import { Component, Input, Output, EventEmitter } from '@angular/core';
-import { CommonModule, NgIf, NgFor } from '@angular/common';
+import { CommonModule, } from '@angular/common';
 import { User } from '../../services/user.service';
 
 @Component({
   selector: 'app-user-modal',
   standalone: true,
-  imports: [CommonModule, NgIf, NgFor],
+  imports: [CommonModule,],
   templateUrl: './user-modal.component.html',
   styleUrl: './user-modal.component.scss'
 })
@@ -18,15 +18,15 @@ export class UserModalComponent {
   @Output() editUser = new EventEmitter<User>();
   @Output() deleteUser = new EventEmitter<User>();
 
-  close() {
+  onClose() {
     this.closeModal.emit();
   }
 
-  edit(user: User) {
+  onEdit(user: User) {
     this.editUser.emit(user);
   }
 
-  delete(user: User) {
+  onDelete(user: User) {
     this.deleteUser.emit(user);
   }
 }
