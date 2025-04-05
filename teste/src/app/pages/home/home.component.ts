@@ -1,11 +1,11 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { SidebarComponent } from '../components/sidebar/sidebar.component';
-import { UserModalComponent } from '../components/user-modal/user-modal.component';
-import { UserService, User } from '../services/user.service';
-import { HeaderComponent } from '../components/header/header.component';
+
 import { RouterModule } from '@angular/router';
-import { HttpClientModule } from '@angular/common/http';
+import { SidebarComponent } from '../../components/sidebar/sidebar.component';
+import { UserModalComponent } from '../../components/user-modal/user-modal.component';
+import { HeaderComponent } from '../../components/header/header.component';
+import { User, UserService } from '../../services/user.service';
 
 @Component({
   selector: 'app-home',
@@ -13,7 +13,6 @@ import { HttpClientModule } from '@angular/common/http';
   imports: [
     CommonModule,
     RouterModule,
-    HttpClientModule,
     SidebarComponent,
     UserModalComponent,
     HeaderComponent,
@@ -25,7 +24,7 @@ export class HomeComponent {
   showUserModal = false;
   users: User[] = [];
 
-  constructor(private userService: UserService) {}
+  constructor(private userService: UserService) { }
 
   openListModal() {
     this.showUserModal = true;
@@ -63,11 +62,11 @@ export class HomeComponent {
       console.warn('ID do usuário é indefinido. Exclusão não realizada.', user);
     }
   }
-  
+
   searchTerm = '';
 
   onSearch(term: string) {
-    this.searchTerm = term.toLowerCase(); // minúsculas para comparar
+    this.searchTerm = term.toLowerCase();
   }
   get filteredUsers(): User[] {
     if (!this.searchTerm) return this.users;
@@ -75,5 +74,5 @@ export class HomeComponent {
       user.name.toLowerCase().includes(this.searchTerm)
     );
   }
-  
+
 }
