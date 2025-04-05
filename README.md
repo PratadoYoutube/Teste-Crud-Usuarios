@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 # Teste
+=======
+# Crud Usuários
+>>>>>>> 0f3b4d1f637835d4ce3c11a61443337653f14b49
 
 This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 19.2.6.
 
