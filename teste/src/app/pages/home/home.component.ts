@@ -14,7 +14,6 @@ import { User, UserService } from '../../services/user.service';
     CommonModule,
     RouterModule,
     SidebarComponent,
-    UserModalComponent,
     HeaderComponent,
   ],
   templateUrl: './home.component.html',

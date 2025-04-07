@@ -1,0 +1,96 @@
+.user-list {
+  padding: 2rem;
+
+  &__title {
+    font-size: 2rem;
+    margin-bottom: 1.5rem;
+  }
+
+  &__items {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem; 
+  }
+
+  &__item {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    padding: 1.5rem;
+    background-color: #fff;
+    border-radius: 1rem;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.05);
+  }
+
+  &__info {
+    display: flex;
+    gap: 1rem;
+    flex: 1;
+  }
+
+  &__avatar {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    object-fit: cover;
+  }
+
+  &__details {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  &__name {
+    font-size: 1.2rem;
+    font-weight: 600;
+    margin-bottom: 0.2rem;
+  }
+
+  &__email {
+    font-size: 0.9rem;
+    color: #666;
+  }
+
+  &__bio {
+    font-size: 0.9rem;
+    color: #444;
+    margin-top: 0.5rem;
+  }
+
+  &__actions {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  &__btn {
+    padding: 0.4rem 0.8rem;
+    border: none;
+    border-radius: 0.5rem;
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: background-color 0.3s;
+
+    &--edit {
+      background-color: #791bf3;
+      color: white;
+
+      &:hover {
+        background-color: #530381;
+      }
+    }
+
+    &--delete {
+      background-color: #ffdddd;
+      color: #b00020;
+
+      &:hover {
+        background-color: #ffbcbc;
+      }
+    }
+  }
+}

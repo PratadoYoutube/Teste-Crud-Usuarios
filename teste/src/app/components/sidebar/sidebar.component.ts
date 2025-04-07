@@ -11,7 +11,6 @@ import { RouterModule } from '@angular/router';
 export class SidebarComponent {
   @Output() openUserList = new EventEmitter<void>(); 
 
-  openList() {
-    this.openUserList.emit(); 
-  }
+  @Output() editUser = new EventEmitter<number>();
+  
 }

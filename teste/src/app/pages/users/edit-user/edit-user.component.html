@@ -1,0 +1,37 @@
+<section class="edit-user">
+    <h2 class="edit-user__title">Editar Usuário</h2>
+  
+    @if (isLoading) {
+      <p class="edit-user__loading">Carregando...</p>
+    } @else {
+      <form [formGroup]="userForm" (ngSubmit)="onSubmit()" class="edit-user__form">
+        <label class="edit-user__field">
+          Nome:
+          <input formControlName="name" type="text" />
+        </label>
+  
+        <label class="edit-user__field">
+          Email:
+          <input formControlName="email" type="email" />
+        </label>
+  
+        <label class="edit-user__field">
+          Bio:
+          <textarea formControlName="bio"></textarea>
+        </label>
+  
+        <label class="edit-user__field">
+          Foto de Perfil (URL):
+          <input formControlName="profilePicture" type="text" />
+        </label>
+  
+        <label class="edit-user__field">
+          Username:
+          <input formControlName="username" type="text" />
+        </label>
+  
+        <button type="submit" [disabled]="userForm.invalid">Salvar</button>
+      </form>
+    }
+  </section>
+  

@@ -1,14 +1,10 @@
-<router-outlet></router-outlet>
-<app-header (search)="onSearch($event)"></app-header>
-<app-user-modal
-  [isOpen]="showUserModal"
-  [users]="filteredUsers"
-  (closeModal)="closeModal()"
-  (editUser)="editUser($event)"
-  (deleteUser)="deleteUser($event)">
-</app-user-modal>
-<app-sidebar (openUserList)="openListModal()"></app-sidebar>
+<div class="layout">
+  <app-header></app-header>
+  <div class="layout__container">
+    <app-sidebar></app-sidebar>
 
-
-
-
+    <main class="layout__content">
+      <router-outlet></router-outlet>
+    </main>
+  </div>
+</div>

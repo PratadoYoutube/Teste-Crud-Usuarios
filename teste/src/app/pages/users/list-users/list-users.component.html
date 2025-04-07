@@ -1,0 +1,41 @@
+<section class="user-list">
+    <h2 class="user-list__title">Usuários</h2>
+  
+    @if (isLoading) {
+      <p class="user-list__loading">Carregando...</p>
+    } @else {
+      @if (users.length > 0) {
+        <ul class="user-list__items">
+          @for (user of users; track user.id) {
+            <li class="user-list__item">
+              <div class="user-list__info">
+                <img 
+                  [src]="user.profilePicture || 'https://via.placeholder.com/60'" 
+                  alt="Foto de {{ user.name }}" 
+                  class="user-list__avatar"
+                />
+                <div class="user-list__details">
+                  <strong class="user-list__name">{{ user.name }}</strong>
+                  <span class="user-list__email">{{ user.email }}</span>
+                  <p class="user-list__bio">{{ user.bio || 'Sem bio cadastrada.' }}</p>
+                </div>
+              </div>
+              <div class="user-card__actions">
+                <button (click)="onEdit(user)" class="user-list__btn user-list__btn--edit">
+                  ✏️ Editar
+                </button>
+                
+              
+                <button (click)="onDelete(user)" class="user-list__btn user-list__btn--delete">
+                  🗑️ Excluir
+                </button>
+              </div>
+            </li>
+          }
+        </ul>
+      } @else {
+        <p class="user-list__empty">Nenhum usuário cadastrado.</p>
+      }
+    }
+  </section>
+  

@@ -45,4 +45,8 @@ export class UserService {
   deleteUser(id: number): Observable<void> {
     return this.http.delete<void>(`${this.API_URL}/${id}`);
   }
+
+  addUser(user: Partial<User>): Observable<User> {
+    return this.http.post<User>(this.API_URL, user);
+  }
 }
